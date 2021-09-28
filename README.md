@@ -1,7 +1,16 @@
-# hello-word
-Just another respository
-
-halooo semua
-perkenalkan aku Lia
-aku berasal dari wonogiri, jawa tengah
-salam kenal yaa :)))
+print ('UTS PTS No.7')
+print ('')
+print ('')
+from qiskit import *
+circuit = QuantumCircuit(3,2)
+circuit.h(0)
+circuit.x(1)
+circuit.h(1)
+circuit.cx(2,0)
+circuit.barrier()
+circuit.measure([0,1],[0,1])
+backend = Aer.get_backend('qasm_simulator')
+result = execute(circuit, backend = backend, shots = 1024).result()
+counts = result.get_counts()
+print(counts)
+circuit.draw(output='mpl')
